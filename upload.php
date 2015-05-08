@@ -5,6 +5,9 @@ $target_dir    = "uploads/"; #1
 $target_file   = $target_dir . basename($_FILES["fileToUpload"]["name"]); #2
 #TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
 echo '<pre>';
+echo 'isset($_FILES)?: ' . isset($_FILES) . '<br>';
+echo 'isset($_FILES["fileToUpload"]) <br>(the key name is value of attribute <mark>name=""</mark> in <br>< input type="file" name="fileToUpload" id="fileToUpload">)? ' . isset($_FILES["fileToUpload"]) . '<br>';
+echo 'basename($_FILES["fileToUpload"]["name"]): ' . basename($_FILES["fileToUpload"]["name"]) . '<br>';
 echo '$target_dir: ' .$target_dir. '<br>';
 echo '$target_file: ' .$target_file. '<br>';
 echo '</pre>';
@@ -23,7 +26,12 @@ if (isset($_POST["submit"])) {
   #TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
   echo '<pre>';
   echo '$_POST[submit]: ' .$_POST["submit"]. '<br>';
-  echo 'due to < input type="submit" value="Upload Image" name="submit">' . '<br>';
+  echo 'the key name is the value of attribute <mark>name=""</mark> in<br> < input type="submit" value="Upload Image" name="submit">' . '<br>';
+  echo 'the value of the array element is the value of attribute <mark>value=""</mark><br>';
+  echo '$_FILES["fileToUpload"]["tmp_name"]: ' . $_FILES["fileToUpload"]["tmp_name"] . '<br>';
+  echo '$_FILES["fileToUpload"]["type"]: '     . $_FILES["fileToUpload"]["type"] . '<br>';
+  echo '$_FILES["fileToUpload"]["size"]: '     . $_FILES["fileToUpload"]["size"] . '<br>';
+  echo '$_FILES["fileToUpload"]["error"]: '    . $_FILES["fileToUpload"]["error"] . '<br>';
   echo '</pre>';
 #LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
   $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
