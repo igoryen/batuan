@@ -1,0 +1,6 @@
+1. $target_dir = "uploads/"
+    specifies the directory where the file is going to be placed
+2. $target_file 
+    specifies the path of the file to be uploaded
+3. $imageFileType 
+    holds the file extension of the file
