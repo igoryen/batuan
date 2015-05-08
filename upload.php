@@ -1,13 +1,37 @@
 <?php
 
+$err_msgs = [];
 $target_dir    = "uploads/"; #1
 $target_file   = $target_dir . basename($_FILES["fileToUpload"]["name"]); #2
+#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+echo '<pre>';
+echo '$target_dir: ' .$target_dir. '<br>';
+echo '$target_file: ' .$target_file. '<br>';
+echo '</pre>';
+#LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
 $uploadOk      = 1;
 $imageFileType = pathinfo($target_file, PATHINFO_EXTENSION); #3
-$err_msgs = [];
+$imageFileType = strtolower($imageFileType);
+#TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+echo '<pre>';
+echo '$imageFileType: ' .$imageFileType. '<br>';
+echo '</pre>';
+#LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
+
 // Check if image file is a actual image or fake image
 if (isset($_POST["submit"])) {
+  #TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+  echo '<pre>';
+  echo '$_POST[submit]: ' .$_POST["submit"]. '<br>';
+  echo 'due to < input type="submit" value="Upload Image" name="submit">' . '<br>';
+  echo '</pre>';
+#LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
   $check = getimagesize($_FILES["fileToUpload"]["tmp_name"]);
+  #TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT
+  echo '<pre>';
+  echo '$check: ' . print_r($check). '<br>';
+  echo '</pre>';
+#LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL
   if ($check !== false) {
     array_push ($err_msgs, "OK, file is an image - " . $check["mime"] . ".");
     $uploadOk = 1;
